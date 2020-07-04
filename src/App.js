@@ -23,7 +23,10 @@ export default function App() {
       .catch((err) => console.error(err));
   }, []);
 
-  async function handleLikeRepository(id) {}
+  async function handleLikeRepository(id) {
+    const response = await api.post(`repositories/${id}/like`);
+    console.log(response.data);
+  }
 
   return (
     <>
@@ -56,7 +59,6 @@ export default function App() {
               <TouchableOpacity
                 style={styles.button}
                 onPress={() => handleLikeRepository(repo.id)}
-                // Remember to replace "1" below with repository ID: {`like-button-${repository.id}`}
                 testID={`like-button-${repo.id}`}
               >
                 <Text style={styles.buttonText}>Curtir</Text>
